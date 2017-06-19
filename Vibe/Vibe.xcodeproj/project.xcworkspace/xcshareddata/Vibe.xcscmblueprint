@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B1716811A5BEF894494FA601501F61DDD96FFBC4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2F24C7ABC659AFF86BEF70BD7DCAF0EF1B9AD29C" : 9223372036854775807,
+    "B1716811A5BEF894494FA601501F61DDD96FFBC4" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "198B82F9-3C5A-4192-8B14-3A5E70E4BF11",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2F24C7ABC659AFF86BEF70BD7DCAF0EF1B9AD29C" : "Vibe\/Vibe\/Vibe\/ios-sdk\/",
+    "B1716811A5BEF894494FA601501F61DDD96FFBC4" : "Vibe\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Vibe",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Vibe\/Vibe.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/spotify\/ios-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2F24C7ABC659AFF86BEF70BD7DCAF0EF1B9AD29C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:graykwise\/vibe.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B1716811A5BEF894494FA601501F61DDD96FFBC4"
+    }
+  ]
+}
