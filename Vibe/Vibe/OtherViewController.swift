@@ -11,6 +11,9 @@ import SafariServices
 import AVFoundation
 
 class OtherViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
+    
+    var time = 20
+    var timer = Timer()
     var auth = SPTAuth.defaultInstance()!
     var session:SPTSession!
     var player: SPTAudioStreamingController?
@@ -19,24 +22,45 @@ class OtherViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        updateAfterFirstLogin()
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func playTimer(_ sender: UIButton) {
+        
+        self.player?.playSpotifyURI("spotify:user:spotify:playlist:37i9dQZF1DX4WYpdgoIcn6", startingWith: 4, startingWithPosition: 0, callback: { (error) in
+            if (error != nil) {
+                print("playing!")
+            }
+        })
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(OtherViewController.countdown), userInfo: nil, repeats: true)
+        print("starting timer")
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func countdown() {
+        time = time - 1
+        print(time)
+        if time == 0 {
+            print("Reached zero")
+            timer.invalidate()
+            //stop music
+            do {
+                try self.player?.stop()
+            }
+            catch let _ {
+                
+            }
+        }
     }
-    */
 
     func updateAfterFirstLogin () {
         if let sessionObj = UserDefaults.standard.object(forKey: "SpotifySession") {
@@ -56,21 +80,9 @@ class OtherViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
             self.player!.login(withAccessToken: authSession.accessToken)
         }
     }
-    
+//    
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
-        // after a user authenticates a session, the SPTAudioStreamingController is then initialized and this method called
-        print("logged in")
-        self.player?.setShuffle(true, callback: { (error) in
-            if (error != nil) {
-                print("didnt shuffle")
-            }
-            
-            self.player?.playSpotifyURI("spotify:user:spotify:playlist:37i9dQZF1DX4WYpdgoIcn6", startingWith: 4, startingWithPosition: 0, callback: { (error) in
-                if (error != nil) {
-                    print("playing!")
-                }
-            })
-        })
+       //This is from the delegate and we need it to possibly play music
     }
     
     func setup () {
