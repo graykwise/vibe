@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  OtherViewController.swift
 //  Vibe
 //
 //  Created by Grayson Wise on 6/20/17.
@@ -10,25 +10,36 @@ import UIKit
 import SafariServices
 import AVFoundation
 
-class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
-
-    @IBOutlet weak var loginButton: UIButton!
-   
+class OtherViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
     var auth = SPTAuth.defaultInstance()!
     var session:SPTSession!
     var player: SPTAudioStreamingController?
     var loginUrl: URL?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         setup()
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
     func updateAfterFirstLogin () {
         if let sessionObj = UserDefaults.standard.object(forKey: "SpotifySession") {
-            loginButton.titleLabel?.text = "Logged In"
             let sessionDataObj = sessionObj as! Data
             let firstTimeSession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as! SPTSession
             self.session = firstTimeSession
@@ -49,28 +60,17 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
         // after a user authenticates a session, the SPTAudioStreamingController is then initialized and this method called
         print("logged in")
-        self.player?.playSpotifyURI("spotify:track:58s6EuEYJdlb0kO7awm3Vp", startingWith: 0, startingWithPosition: 0, callback: { (error) in
+        self.player?.setShuffle(true, callback: { (error) in
             if (error != nil) {
-                print("playing!")
+                print("didnt shuffle")
             }
-        })
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
-    @IBAction func login(_ sender: UIButton) {
-        
-        if UIApplication.shared.canOpenURL(loginUrl!) {
-            UIApplication.shared.open(loginUrl!, options: [:], completionHandler: nil)
             
-            if auth.canHandle(auth.redirectURL) {
-                // To do - build in error handling
-            }
-        }
+            self.player?.playSpotifyURI("spotify:user:spotify:playlist:37i9dQZF1DX4WYpdgoIcn6", startingWith: 4, startingWithPosition: 0, callback: { (error) in
+                if (error != nil) {
+                    print("playing!")
+                }
+            })
+        })
     }
     
     func setup () {
@@ -83,7 +83,5 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
         auth.requestedScopes = [SPTAuthStreamingScope]
         loginUrl = auth.spotifyWebAuthenticationURL()
     }
-    
-    
-}
 
+}
