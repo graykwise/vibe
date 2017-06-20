@@ -17,50 +17,18 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
     var auth = SPTAuth.defaultInstance()!
     var session:SPTSession!
     var player: SPTAudioStreamingController?
-    var loginUrl: URL!
+    var loginUrl: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setup()
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "loginSuccessful"), object: nil)
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
-    @IBAction func login(_ sender: UIButton) {
-        
-        if UIApplication.shared.canOpenURL(loginUrl!){
-            print("i can open it")
-            UIApplication.shared.open(loginUrl!, options: [:], completionHandler: nil)
-            print("here I am")
-            if auth.canHandle(auth.redirectURL) {
-                // To do - build in error handling
-                print("here I go again on my own")
-            }
-        }
-
-    }
-    
-    func setup () {
-        // insert redirect your url and client ID below
-        let redirectURL = "vibe-spotify://returnafterlogin" // put your redirect URL here
-        let clientID = "c49c6284c544447b8646bbebd99aa15e" // put your client ID here
-        
-        SPTAuth.defaultInstance().clientID = clientID
-        SPTAuth.defaultInstance().redirectURL = URL(string: redirectURL)
-        print("in setup \(SPTAuth.defaultInstance().redirectURL!)")
-        auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
-        loginUrl = auth.spotifyWebAuthenticationURL()
     }
     
     func updateAfterFirstLogin () {
-        if let sessionObj:AnyObject = UserDefaults.standard.string(forKey: "SpotifySession") as AnyObject? {
+        if let sessionObj = UserDefaults.standard.object(forKey: "SpotifySession") {
+            loginButton.titleLabel?.text = "Logged In"
             let sessionDataObj = sessionObj as! Data
             let firstTimeSession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as! SPTSession
             self.session = firstTimeSession
@@ -77,7 +45,6 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
             self.player!.login(withAccessToken: authSession.accessToken)
         }
     }
-        
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
         // after a user authenticates a session, the SPTAudioStreamingController is then initialized and this method called
@@ -88,6 +55,35 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
             }
         })
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+    @IBAction func login(_ sender: UIButton) {
+        
+        if UIApplication.shared.canOpenURL(loginUrl!) {
+            UIApplication.shared.open(loginUrl!, options: [:], completionHandler: nil)
+            
+            if auth.canHandle(auth.redirectURL) {
+                // To do - build in error handling
+            }
+        }
+    }
+    
+    func setup () {
+        // insert redirect your url and client ID below
+        let redirectURL = "vibe-spotify://returnafterlogin" // put your redirect URL here
+        let clientID = "c49c6284c544447b8646bbebd99aa15e" // put your client ID here
+        
+        SPTAuth.defaultInstance().clientID = clientID
+        SPTAuth.defaultInstance().redirectURL = URL(string: redirectURL)
+        auth.requestedScopes = [SPTAuthStreamingScope]
+        loginUrl = auth.spotifyWebAuthenticationURL()
+    }
+    
     
 }
 

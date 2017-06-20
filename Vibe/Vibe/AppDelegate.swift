@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         auth.redirectURL = URL(string: "vibe-spotify://returnafterlogin")
-        print("1 \(auth.redirectURL!)")
         auth.sessionUserDefaultsKey = "current session"
         return true
     }
@@ -26,29 +25,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
         // called when user signs into spotify. Session data saved into user defaults, then notification posted to call updateAfterFirstLogin in ViewController.swift. Modeled off recommneded auth flow suggested by Spotify documentation
-        print("2 \(auth.redirectURL)")
+        
         if auth.canHandle(auth.redirectURL) {
-            
             auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
+                
                 
                 if error != nil {
                     print("error!")
                 }
-                let userDefaults = UserDefaults.standard
                 let sessionData = NSKeyedArchiver.archivedData(withRootObject: session!)
-                print(sessionData)
-                userDefaults.set(sessionData, forKey: "SpotifySession")
-                userDefaults.synchronize()
+                UserDefaults.standard.set(sessionData, forKey: "SpotifySession")
+                UserDefaults.standard.synchronize()
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessful"), object: nil)
             })
             return true
         }
         
         return false
-        
-        
     }
+    
+        
 
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

@@ -27,7 +27,7 @@
 			<string>graykwise.vibe-app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>vibe-spotify://returnafterlogin</string>
+				<string>vibe-spotify</string>
 			</array>
 		</dict>
 	</array>
@@ -56,30 +56,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    
-    
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>spotify-action</string>
-        <string>spotify</string>
-    </array>
-    <key>LSRequiresIPhoneOS</key>
-    <true/>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>cloudfront.net</key>
-            <dict>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-                <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-            </dict>
-        </dict>
-    </dict>
 </dict>
 </plist>
