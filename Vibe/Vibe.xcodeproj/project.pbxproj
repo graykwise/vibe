@@ -20,6 +20,8 @@
 		BC0B95641EF9638A0073E0A6 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95631EF9638A0073E0A6 /* OtherViewController.swift */; };
 		BC0B95661EF9AA310073E0A6 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95651EF9AA310073E0A6 /* Session.swift */; };
 		BC0B95681EF9AC680073E0A6 /* MusicPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95671EF9AC680073E0A6 /* MusicPicker.swift */; };
+		BC0B956A1EF9B8D20073E0A6 /* ChooseVibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95691EF9B8D20073E0A6 /* ChooseVibeViewController.swift */; };
+		BC0B956E1EF9B9290073E0A6 /* VibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B956D1EF9B9290073E0A6 /* VibeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		BC0B95631EF9638A0073E0A6 /* OtherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		BC0B95651EF9AA310073E0A6 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		BC0B95671EF9AC680073E0A6 /* MusicPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPicker.swift; sourceTree = "<group>"; };
+		BC0B95691EF9B8D20073E0A6 /* ChooseVibeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseVibeViewController.swift; sourceTree = "<group>"; };
+		BC0B956D1EF9B9290073E0A6 /* VibeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibeViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +83,10 @@
 			children = (
 				BC0B953B1EF899260073E0A6 /* Spotify Frameworks */,
 				BC0B95231EF898370073E0A6 /* AppDelegate.swift */,
+				BC0B956D1EF9B9290073E0A6 /* VibeViewController.swift */,
 				BC0B95251EF898370073E0A6 /* LoginViewController.swift */,
 				BC0B95271EF898370073E0A6 /* Main.storyboard */,
+				BC0B95691EF9B8D20073E0A6 /* ChooseVibeViewController.swift */,
 				BC0B95631EF9638A0073E0A6 /* OtherViewController.swift */,
 				BC0B95651EF9AA310073E0A6 /* Session.swift */,
 				BC0B95671EF9AC680073E0A6 /* MusicPicker.swift */,
@@ -186,6 +192,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC0B956E1EF9B9290073E0A6 /* VibeViewController.swift in Sources */,
+				BC0B956A1EF9B8D20073E0A6 /* ChooseVibeViewController.swift in Sources */,
 				BC0B95661EF9AA310073E0A6 /* Session.swift in Sources */,
 				BC0B95681EF9AC680073E0A6 /* MusicPicker.swift in Sources */,
 				BC0B953F1EF899420073E0A6 /* BridgeViewController.m in Sources */,
