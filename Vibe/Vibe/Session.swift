@@ -19,4 +19,10 @@ class Session {
         vibeType = vibe
     }
     
+    func setMusic() {
+        var music = MusicPicker(vibe: vibeType)
+        music.pickPlaylist(givenVibe: vibeType)
+        playlistURI = music.getPlaylistURI()
+    }
+    
 }
