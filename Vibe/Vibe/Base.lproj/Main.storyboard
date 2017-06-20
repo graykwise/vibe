@@ -32,10 +32,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="415" id="MrY-SJ-fGU"/>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="c6b-Dx-2RG"/>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mAe-qh-sqK"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ecF-9Q-l0b" secondAttribute="bottom" constant="178" id="t3V-Se-XGA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ecF-9Q-l0b" secondAttribute="bottom" constant="178" id="76d-f2-htC"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="415" id="LU5-7p-dMr"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v0Z-Gm-d3Z"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="vG1-vT-XVB"/>
                         </constraints>
                     </view>
                     <connections>
@@ -58,7 +58,20 @@
                     <view key="view" contentMode="scaleToFill" id="QgJ-iV-jnt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qz7-4B-ceH">
+                                <rect key="frame" x="121" y="318" width="132" height="30"/>
+                                <state key="normal" title="Play For 5 Seconds"/>
+                                <connections>
+                                    <action selector="playTimer:" destination="14T-XZ-zEW" eventType="touchUpInside" id="3qf-GU-RSs"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qz7-4B-ceH" firstAttribute="centerX" secondItem="QgJ-iV-jnt" secondAttribute="centerX" id="ERx-eg-8Rr"/>
+                            <constraint firstItem="Qz7-4B-ceH" firstAttribute="centerY" secondItem="QgJ-iV-jnt" secondAttribute="centerY" id="iva-Yq-knT"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfE-bF-8N9" userLabel="First Responder" sceneMemberID="firstResponder"/>
