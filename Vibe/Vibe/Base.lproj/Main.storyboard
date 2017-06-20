@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +24,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecF-9Q-l0b">
-                                <rect key="frame" x="23" y="435" width="368" height="123"/>
+                                <rect key="frame" x="23" y="498" width="368" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ecF-9Q-l0b" secondAttribute="height" multiplier="92:15" id="4pH-lI-3LC"/>
+                                    <constraint firstAttribute="width" constant="368" id="68w-gS-Dxr"/>
+                                </constraints>
                                 <state key="normal" image="loginwithspotify"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uee-aa-U4y"/>
@@ -32,10 +37,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CK5-zB-zGr"/>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="HGz-Tq-496"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ecF-9Q-l0b" secondAttribute="bottom" constant="178" id="HZf-es-lwV"/>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="415" id="pXv-V3-j2v"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HS9-gg-bw0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ecF-9Q-l0b" secondAttribute="bottom" constant="178" id="cu4-U1-7Db"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="zxR-Ag-0Ct"/>
                         </constraints>
                     </view>
                     <connections>
@@ -45,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+            <point key="canvasLocation" x="31.884057971014496" y="37.5"/>
         </scene>
         <!--Other View Controller-->
         <scene sceneID="Mqy-v0-0YX">
