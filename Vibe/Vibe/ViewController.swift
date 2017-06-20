@@ -36,10 +36,12 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
     @IBAction func login(_ sender: UIButton) {
         
         if UIApplication.shared.canOpenURL(loginUrl!){
+            print("i can open it")
             UIApplication.shared.open(loginUrl!, options: [:], completionHandler: nil)
-            
+            print("here I am")
             if auth.canHandle(auth.redirectURL) {
                 // To do - build in error handling
+                print("here I go again on my own")
             }
         }
 
@@ -52,6 +54,7 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
         
         SPTAuth.defaultInstance().clientID = clientID
         SPTAuth.defaultInstance().redirectURL = URL(string: redirectURL)
+        print("in setup \(SPTAuth.defaultInstance().redirectURL!)")
         auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
         loginUrl = auth.spotifyWebAuthenticationURL()
     }
