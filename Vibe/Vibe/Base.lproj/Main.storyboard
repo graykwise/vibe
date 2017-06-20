@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,10 +24,6 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecF-9Q-l0b">
                                 <rect key="frame" x="19" y="435" width="336" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ecF-9Q-l0b" secondAttribute="height" multiplier="56:9" id="7Nf-h6-DmW"/>
-                                    <constraint firstAttribute="width" constant="336" id="IZ6-jR-LM0"/>
-                                </constraints>
                                 <state key="normal" image="loginwithspotify"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uee-aa-U4y"/>
@@ -37,9 +32,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="415" id="LU5-7p-dMr"/>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v0Z-Gm-d3Z"/>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="vG1-vT-XVB"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CK5-zB-zGr"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="HGz-Tq-496"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ecF-9Q-l0b" secondAttribute="bottom" constant="178" id="HZf-es-lwV"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="415" id="pXv-V3-j2v"/>
                         </constraints>
                     </view>
                     <connections>
@@ -64,17 +60,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qz7-4B-ceH">
-                                <rect key="frame" x="121" y="318" width="132" height="30"/>
-                                <state key="normal" title="Play For 5 Seconds"/>
+                                <rect key="frame" x="156" y="139" width="63" height="30"/>
+                                <state key="normal" title="Play Chill"/>
                                 <connections>
                                     <action selector="playTimer:" destination="14T-XZ-zEW" eventType="touchUpInside" id="3qf-GU-RSs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDn-Xs-Olu">
+                                <rect key="frame" x="153" y="477" width="69" height="30"/>
+                                <state key="normal" title="Play Hype"/>
+                                <connections>
+                                    <action selector="playHype:" destination="14T-XZ-zEW" eventType="touchUpInside" id="wKy-A5-yrT"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Qz7-4B-ceH" firstAttribute="centerX" secondItem="QgJ-iV-jnt" secondAttribute="centerX" id="ERx-eg-8Rr"/>
-                            <constraint firstItem="Qz7-4B-ceH" firstAttribute="centerY" secondItem="QgJ-iV-jnt" secondAttribute="centerY" id="iva-Yq-knT"/>
+                            <constraint firstItem="Qz7-4B-ceH" firstAttribute="centerX" secondItem="QgJ-iV-jnt" secondAttribute="centerX" id="5PY-RQ-UAK"/>
+                            <constraint firstItem="dha-hf-6sk" firstAttribute="top" secondItem="XDn-Xs-Olu" secondAttribute="bottom" constant="160" id="AXE-Mq-qdo"/>
+                            <constraint firstItem="Qz7-4B-ceH" firstAttribute="top" secondItem="wST-kj-fUs" secondAttribute="bottom" constant="119" id="VVH-Wk-P3Z"/>
+                            <constraint firstItem="Qz7-4B-ceH" firstAttribute="centerX" secondItem="XDn-Xs-Olu" secondAttribute="centerX" id="tr5-6g-FWb"/>
                         </constraints>
                     </view>
                 </viewController>
