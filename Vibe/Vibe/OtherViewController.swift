@@ -27,6 +27,11 @@ class OtherViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
     }
 
     @IBAction func playTimer(_ sender: UIButton) {
+        self.player?.setIsPlaying(true, callback: { (error) in
+            if (error != nil) {
+            print("not set to playing")
+            }
+            })
         
         self.player?.playSpotifyURI("spotify:user:spotify:playlist:37i9dQZF1DX4WYpdgoIcn6", startingWith: 4, startingWithPosition: 0, callback: { (error) in
             if (error != nil) {
@@ -47,18 +52,18 @@ class OtherViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
     
 
     func countdown() {
+        
         time = time - 1
         print(time)
         if time == 0 {
             print("Reached zero")
             timer.invalidate()
             //stop music
-            do {
-                try self.player?.stop()
-            }
-            catch let _ {
-                
-            }
+            self.player?.setIsPlaying(false, callback: { (error) in
+                if (error != nil) {
+                    print("not set to stopped")
+                }
+            })
         }
     }
 
