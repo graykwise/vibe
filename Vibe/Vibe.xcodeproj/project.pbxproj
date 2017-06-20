@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC0B95241EF898370073E0A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95231EF898370073E0A6 /* AppDelegate.swift */; };
-		BC0B95261EF898370073E0A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95251EF898370073E0A6 /* ViewController.swift */; };
+		BC0B95261EF898370073E0A6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95251EF898370073E0A6 /* LoginViewController.swift */; };
 		BC0B95291EF898370073E0A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC0B95271EF898370073E0A6 /* Main.storyboard */; };
 		BC0B952B1EF898370073E0A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC0B952A1EF898370073E0A6 /* Assets.xcassets */; };
 		BC0B952E1EF898370073E0A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC0B952C1EF898370073E0A6 /* LaunchScreen.storyboard */; };
@@ -16,12 +16,14 @@
 		BC0B95391EF8991D0073E0A6 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC0B95361EF8991D0073E0A6 /* SpotifyAuthentication.framework */; };
 		BC0B953A1EF8991D0073E0A6 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC0B95371EF8991D0073E0A6 /* SpotifyMetadata.framework */; };
 		BC0B953F1EF899420073E0A6 /* BridgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0B953E1EF899420073E0A6 /* BridgeViewController.m */; };
+		BC0B95421EF93A0E0073E0A6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC0B95411EF93A0E0073E0A6 /* AVFoundation.framework */; };
+		BC0B95641EF9638A0073E0A6 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95631EF9638A0073E0A6 /* OtherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BC0B95201EF898370073E0A6 /* Vibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC0B95231EF898370073E0A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC0B95251EF898370073E0A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BC0B95251EF898370073E0A6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BC0B95281EF898370073E0A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC0B952A1EF898370073E0A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC0B952D1EF898370073E0A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -32,6 +34,8 @@
 		BC0B953C1EF899420073E0A6 /* Vibe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vibe-Bridging-Header.h"; sourceTree = "<group>"; };
 		BC0B953D1EF899420073E0A6 /* BridgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeViewController.h; sourceTree = "<group>"; };
 		BC0B953E1EF899420073E0A6 /* BridgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeViewController.m; sourceTree = "<group>"; };
+		BC0B95411EF93A0E0073E0A6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BC0B95631EF9638A0073E0A6 /* OtherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC0B95421EF93A0E0073E0A6 /* AVFoundation.framework in Frameworks */,
 				BC0B95381EF8991D0073E0A6 /* SpotifyAudioPlayback.framework in Frameworks */,
 				BC0B953A1EF8991D0073E0A6 /* SpotifyMetadata.framework in Frameworks */,
 				BC0B95391EF8991D0073E0A6 /* SpotifyAuthentication.framework in Frameworks */,
@@ -53,6 +58,7 @@
 			children = (
 				BC0B95221EF898370073E0A6 /* Vibe */,
 				BC0B95211EF898370073E0A6 /* Products */,
+				BC0B95401EF93A0E0073E0A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,8 +75,9 @@
 			children = (
 				BC0B953B1EF899260073E0A6 /* Spotify Frameworks */,
 				BC0B95231EF898370073E0A6 /* AppDelegate.swift */,
-				BC0B95251EF898370073E0A6 /* ViewController.swift */,
+				BC0B95251EF898370073E0A6 /* LoginViewController.swift */,
 				BC0B95271EF898370073E0A6 /* Main.storyboard */,
+				BC0B95631EF9638A0073E0A6 /* OtherViewController.swift */,
 				BC0B952A1EF898370073E0A6 /* Assets.xcassets */,
 				BC0B952C1EF898370073E0A6 /* LaunchScreen.storyboard */,
 				BC0B952F1EF898370073E0A6 /* Info.plist */,
@@ -89,6 +96,14 @@
 				BC0B95371EF8991D0073E0A6 /* SpotifyMetadata.framework */,
 			);
 			name = "Spotify Frameworks";
+			sourceTree = "<group>";
+		};
+		BC0B95401EF93A0E0073E0A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC0B95411EF93A0E0073E0A6 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,7 +181,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC0B953F1EF899420073E0A6 /* BridgeViewController.m in Sources */,
-				BC0B95261EF898370073E0A6 /* ViewController.swift in Sources */,
+				BC0B95641EF9638A0073E0A6 /* OtherViewController.swift in Sources */,
+				BC0B95261EF898370073E0A6 /* LoginViewController.swift in Sources */,
 				BC0B95241EF898370073E0A6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +316,6 @@
 				);
 				INFOPLIST_FILE = Vibe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "graykwise.vibe-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Vibe/Vibe-Bridging-Header.h";
@@ -321,7 +336,6 @@
 				);
 				INFOPLIST_FILE = Vibe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "graykwise.vibe-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Vibe/Vibe-Bridging-Header.h";
