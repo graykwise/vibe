@@ -52,7 +52,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         var length = sessionArray[indexPath.item].timeDuration!
         let hours = length/60/60
         let minutes = length/60 - hours*60
-        let seconds = length/60 - hours*60*60 - minutes*60
+        let seconds = length - hours*60*60 - minutes*60
         
         if(hours > 0){
             if(minutes < 10){
@@ -75,6 +75,25 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
             }
         }
         else {
+            if(minutes < 10){
+                if(seconds < 10){
+                    
+                    timer.text = "\(minutes):0\(seconds)"
+                }
+                else{
+                    timer.text = "\(minutes):\(seconds)"
+                }
+            }
+            else {
+                if(seconds < 10){
+                    
+                    timer.text = "\(minutes):0\(seconds)"
+                }
+                else{
+                    timer.text = "\(minutes):\(seconds)"
+                }
+            }
+
         }
         
         
