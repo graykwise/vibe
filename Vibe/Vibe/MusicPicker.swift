@@ -12,8 +12,9 @@ class MusicPicker {
     var vibe: String!
     var playlistName: String!
     
-    init(vibe: String) {
-        self.vibe = vibe
+    init() {
+        vibe = ""
+        playlistName = ""
     }
     
     func pickPlaylist(givenVibe: String) {

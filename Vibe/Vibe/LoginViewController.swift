@@ -28,8 +28,37 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
     }
     
     func userLoggedIn() {
+        updateAfterFirstLogin()
         performSegue(withIdentifier: "loginToVibe", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginToVibe" {
+            let navVC = segue.destination as! UINavigationController
+            let newView = navVC.topViewController as! VibeViewController
+            newView.player = self.player
+        }
+    }
+    
+    func updateAfterFirstLogin () {
+        if let sessionObj = UserDefaults.standard.object(forKey: "SpotifySession") {
+            let sessionDataObj = sessionObj as! Data
+            let firstTimeSession = NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) as! SPTSession
+            self.session = firstTimeSession
+            initializePlayer(authSession: session)
+        }
+    }
+    
+    func initializePlayer(authSession:SPTSession){
+        if self.player == nil {
+            self.player = SPTAudioStreamingController.sharedInstance()
+            self.player!.playbackDelegate = self
+            self.player!.delegate = self
+            try! player!.start(withClientId: auth.clientID)
+            self.player!.login(withAccessToken: authSession.accessToken)
+        }
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -51,12 +80,12 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
         // insert redirect your url and client ID below
         let redirectURL = "vibe-spotify://returnafterlogin" // put your redirect URL here
         let clientID = "c49c6284c544447b8646bbebd99aa15e" // put your client ID here
-        
         SPTAuth.defaultInstance().clientID = clientID
         SPTAuth.defaultInstance().redirectURL = URL(string: redirectURL)
         auth.requestedScopes = [SPTAuthStreamingScope]
         loginUrl = auth.spotifyWebAuthenticationURL()
     }
+    
     
 }
 
