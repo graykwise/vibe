@@ -17,11 +17,12 @@ class Session {
     init(length: Int, vibe: String) {
         timeDuration = length
         vibeType = vibe
+        setMusic(vibe: vibeType)
     }
     
-    func setMusic() {
-        var music = MusicPicker(vibe: vibeType)
-        music.pickPlaylist(givenVibe: vibeType)
+    func setMusic(vibe: String) {
+        let music = MusicPicker()
+        music.pickPlaylist(givenVibe: vibe)
         playlistURI = music.getPlaylistURI()
     }
     

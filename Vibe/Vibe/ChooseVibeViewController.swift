@@ -9,7 +9,10 @@
 import UIKit
 
 class ChooseVibeViewController: UIViewController {
-
+    var selectedVibe: String!
+    
+    var selectedSession: Session!
+    
     @IBOutlet weak var energizeButton: UIButton!
     @IBOutlet weak var focusButton: UIButton!
     @IBOutlet weak var chillButton: UIButton!
@@ -19,18 +22,28 @@ class ChooseVibeViewController: UIViewController {
         showSelectedButton(selected: sender)
         focusButton.layer.opacity = 0.4
         energizeButton.layer.opacity = 0.4
+        
+        selectedVibe = "Chill"
+       
+        
     }
     
     @IBAction func focusButton(_ sender: UIButton) {
         showSelectedButton(selected: sender)
         energizeButton.layer.opacity = 0.4
         chillButton.layer.opacity = 0.4
+        
+       selectedVibe = "Focus"
+        
+        
     }
     
     @IBAction func energizeButton(_ sender: UIButton) {
         showSelectedButton(selected: sender)
         focusButton.layer.opacity = 0.4
         chillButton.layer.opacity = 0.4
+        
+        selectedVibe = "Energize"
     }
     
     func showSelectedButton(selected: UIButton) {
@@ -48,7 +61,9 @@ class ChooseVibeViewController: UIViewController {
     
     
     @IBAction func saveButton(_ sender: Any) {
-        print(timer.countDownDuration)
+        selectedSession = Session(length: Int(timer.countDownDuration), vibe: selectedVibe)
+        print(selectedSession.vibeType)
+        performSegue(withIdentifier: "saveSegue", sender: sender)
     }
     
     
@@ -73,5 +88,14 @@ class ChooseVibeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "saveSegue" {
+            print(selectedSession.vibeType)
+
+            let nextView = segue.destination as? VibeViewController
+            nextView?.savedSession = selectedSession
+            }
+    }
 
 }
