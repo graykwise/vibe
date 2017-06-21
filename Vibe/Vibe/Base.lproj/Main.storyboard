@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G8c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -165,7 +165,7 @@
                     <navigationItem key="navigationItem" title="Vibe" id="WIt-h4-pAV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YHG-hD-gXr">
                             <connections>
-                                <segue destination="ZvR-1F-5L2" kind="presentation" id="PT0-dh-LSH"/>
+                                <segue destination="ZvR-1F-5L2" kind="presentation" identifier="addSession" id="PT0-dh-LSH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -263,7 +263,7 @@
                         <outlet property="energizeButton" destination="aXl-vm-2BN" id="Ire-y8-jpd"/>
                         <outlet property="focusButton" destination="6NL-Ls-hIO" id="Ta5-Au-Igh"/>
                         <outlet property="timer" destination="vE8-l9-GEg" id="Bzk-JK-NOK"/>
-                        <segue destination="zF5-Nv-0Zn" kind="show" identifier="saveSegue" id="bR2-9n-m06"/>
+                        <segue destination="zF5-Nv-0Zn" kind="presentation" identifier="saveSegue" id="bR2-9n-m06"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFh-9b-tTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -316,6 +316,6 @@
         <image name="startButton" width="142" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bR2-9n-m06"/>
+        <segue reference="vLf-HM-ALn"/>
     </inferredMetricsTieBreakers>
 </document>

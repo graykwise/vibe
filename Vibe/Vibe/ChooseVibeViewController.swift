@@ -10,7 +10,7 @@ import UIKit
 
 class ChooseVibeViewController: UIViewController {
     var selectedVibe: String!
-    
+    var delegate: SessionDelegate?
     var selectedSession: Session!
     
     @IBOutlet weak var energizeButton: UIButton!
@@ -62,8 +62,8 @@ class ChooseVibeViewController: UIViewController {
     
     @IBAction func saveButton(_ sender: Any) {
         selectedSession = Session(length: Int(timer.countDownDuration), vibe: selectedVibe)
-        print(selectedSession.vibeType)
-        performSegue(withIdentifier: "saveSegue", sender: sender)
+        delegate?.sessionWasSaved(session: selectedSession)
+        dismiss(animated: true, completion: nil)
     }
     
     

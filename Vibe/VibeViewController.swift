@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import SafariServices
 
-class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
+class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate, SessionDelegate {
 
     var clock = Timer()
     var time: Int!
@@ -30,11 +30,26 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addSession" {
+            let navigationController = segue.destination as! UINavigationController
+            let newViewController = navigationController.topViewController as! ChooseVibeViewController
+            newViewController.delegate = self
+        }
+    }
+    
 
     @IBAction func startVibing(_ sender: Any) {
         
+        if player == nil {
+            print("you dont have a player")
+        }
+        
         if player?.loggedIn == true {
             print("logged in")
+        }
+        if player?.loggedIn == false {
+            print("not logged in")
         }
         
         self.player?.setShuffle(true, callback: { (error) in
@@ -79,7 +94,11 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     }
     */
     
-  
+    func sessionWasSaved(session: Session) {
+        //do stuff here
+        savedSession = session
+        
+    }
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
         //This is from the delegate and we need it to possibly play music
