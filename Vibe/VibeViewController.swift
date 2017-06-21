@@ -10,21 +10,83 @@ import UIKit
 import AVFoundation
 import SafariServices
 
-class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate, SessionDelegate {
+class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate, SessionDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
+    @IBOutlet weak var collectionOfSessions: UICollectionView!
+    
+    var sessionArray = [Session]()
     var clock = Timer()
     var time: Int!
-    var player: SPTAudioStreamingController?    
-    
+    var player: SPTAudioStreamingController?
     var savedSession: Session!
     
     @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionOfSessions.dataSource = self
+        collectionOfSessions.delegate = self
         // Do any additional setup after loading the view.
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "session", for: indexPath)
+        var vibeName = sessionArray[indexPath.item].vibeType
+        var vibePhoto = UIImage()
+        if vibeName == "Chill"{
+            vibePhoto = #imageLiteral(resourceName: "chillButton1")
+        }
+        if vibeName == "Focus"{
+            vibePhoto = #imageLiteral(resourceName: "focusButton1")
+        }
+        if vibeName == "Energize"{
+            vibePhoto = #imageLiteral(resourceName: "energizeButton1")
+        }
+    
+        cell.contentView.addSubview(UIImageView.init(image: vibePhoto))
 
+        let timer = UILabel(frame: CGRect(x: cell.bounds.width - 100, y: 30, width: cell.bounds.width, height: 50))
+        
+        //sets the label to be in hours/minutes/seconds
+        //TODO: fix this it's not the right math
+        var length = sessionArray[indexPath.item].timeDuration!
+        let hours = length/60/60
+        let minutes = length/60 - hours*60
+        let seconds = length/60 - hours*60*60 - minutes*60
+        
+        if(hours > 0){
+            if(minutes < 10){
+                if(seconds < 10){
+                    
+                    timer.text = "\(hours):0\(minutes):0\(seconds)"
+                }
+                else{
+                    timer.text = "\(hours):0\(minutes):\(seconds)"
+                }
+            }
+            else {
+                if(seconds < 10){
+                
+                    timer.text = "\(hours):\(minutes):0\(seconds)"
+                }
+                else{
+                    timer.text = "\(hours):\(minutes):\(seconds)"
+                }
+            }
+        }
+        else {
+        }
+        
+        
+        timer.font.withSize(30)
+        cell.contentView.addSubview(timer)
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sessionArray.count
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,10 +102,6 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     
 
     @IBAction func startVibing(_ sender: Any) {
-        
-        if player == nil {
-            print("you dont have a player")
-        }
         
         if player?.loggedIn == true {
             print("logged in")
@@ -63,9 +121,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
             })
         })
         
-        print(savedSession.playlistURI)
-        
-        self.player?.playSpotifyURI(savedSession.playlistURI, startingWith: 9, startingWithPosition: 0, callback: { (error) in
+        self.player?.playSpotifyURI(sessionArray[0].playlistURI, startingWith: 9, startingWithPosition: 0, callback: { (error) in
             print("in callback")
 
             if (error == nil) {
@@ -76,13 +132,10 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
             }
         })
         
-        print("after callback")
-        
-        time = savedSession.timeDuration
+        time = sessionArray[0].timeDuration
         
         
         clock = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(OtherViewController.countdown), userInfo: nil, repeats: true)
-        print("starting timer")
     }
     /*
     // MARK: - Navigation
@@ -96,13 +149,17 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     
     func sessionWasSaved(session: Session) {
         //do stuff here
-        savedSession = session
         
+        savedSession = session
+        sessionArray.append(savedSession)
+        collectionOfSessions.reloadData()
+
     }
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
         //This is from the delegate and we need it to possibly play music
     }
+    
     
     func countdown() {
         

@@ -13,10 +13,24 @@ class ChooseVibeViewController: UIViewController {
     var delegate: SessionDelegate?
     var selectedSession: Session!
     
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var energizeButton: UIButton!
     @IBOutlet weak var focusButton: UIButton!
     @IBOutlet weak var chillButton: UIButton!
     @IBOutlet weak var timer: UIDatePicker!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        timer.countDownDuration = 60.0
+        saveButton.isEnabled = false
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     @IBAction func chillButton(_ sender: UIButton) {
         showSelectedButton(selected: sender)
@@ -24,7 +38,7 @@ class ChooseVibeViewController: UIViewController {
         energizeButton.layer.opacity = 0.4
         
         selectedVibe = "Chill"
-       
+        saveButton.isEnabled = true
         
     }
     
@@ -33,8 +47,8 @@ class ChooseVibeViewController: UIViewController {
         energizeButton.layer.opacity = 0.4
         chillButton.layer.opacity = 0.4
         
-       selectedVibe = "Focus"
-        
+        selectedVibe = "Focus"
+        saveButton.isEnabled = true
         
     }
     
@@ -44,6 +58,7 @@ class ChooseVibeViewController: UIViewController {
         chillButton.layer.opacity = 0.4
         
         selectedVibe = "Energize"
+        saveButton.isEnabled = true
     }
     
     func showSelectedButton(selected: UIButton) {
@@ -66,17 +81,7 @@ class ChooseVibeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        timer.countDownDuration = 60.0
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
     
 
     /*

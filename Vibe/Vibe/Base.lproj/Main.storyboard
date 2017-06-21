@@ -23,11 +23,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecF-9Q-l0b">
-                                <rect key="frame" x="23" y="498" width="368" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibe requires connecting to a Spotify Premium account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xs-eK-Pn6">
+                                <rect key="frame" x="89" y="659" width="236" height="57"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ecF-9Q-l0b" secondAttribute="height" multiplier="92:15" id="4pH-lI-3LC"/>
-                                    <constraint firstAttribute="width" constant="368" id="68w-gS-Dxr"/>
+                                    <constraint firstAttribute="height" constant="57" id="DgU-wA-edy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vibetitle" translatesAutoresizingMaskIntoConstraints="NO" id="PBf-P8-Giv">
+                                <rect key="frame" x="32" y="120" width="350" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="93G-Jg-h0D"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecF-9Q-l0b">
+                                <rect key="frame" x="23" y="461" width="368" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ekF-Xk-1fQ"/>
                                 </constraints>
                                 <state key="normal" image="loginwithspotify"/>
                                 <connections>
@@ -37,9 +51,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HS9-gg-bw0"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ecF-9Q-l0b" secondAttribute="bottom" constant="178" id="cu4-U1-7Db"/>
-                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="zxR-Ag-0Ct"/>
+                            <constraint firstItem="PBf-P8-Giv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="0ps-t5-qx1"/>
+                            <constraint firstItem="9Xs-eK-Pn6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="69" id="3ma-tc-cg3"/>
+                            <constraint firstItem="PBf-P8-Giv" firstAttribute="centerX" secondItem="ecF-9Q-l0b" secondAttribute="centerX" id="85G-30-DlV"/>
+                            <constraint firstAttribute="bottom" secondItem="ecF-9Q-l0b" secondAttribute="bottom" constant="215" id="Ha3-Tl-JVi"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="LRK-iF-pcJ"/>
+                            <constraint firstItem="PBf-P8-Giv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LoA-sT-Dtn"/>
+                            <constraint firstAttribute="bottom" secondItem="9Xs-eK-Pn6" secondAttribute="bottom" constant="20" symbolic="YES" id="N7P-dR-gGa"/>
+                            <constraint firstItem="PBf-P8-Giv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="viC-0h-ODP"/>
+                            <constraint firstItem="ecF-9Q-l0b" firstAttribute="centerX" secondItem="9Xs-eK-Pn6" secondAttribute="centerX" id="w1B-YN-Bco"/>
                         </constraints>
                     </view>
                     <connections>
@@ -49,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1091" y="38"/>
+            <point key="canvasLocation" x="1089.8550724637682" y="37.5"/>
         </scene>
         <!--Other View Controller-->
         <scene sceneID="Mqy-v0-0YX">
@@ -100,11 +120,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y4R-y3-I7L">
-                                <rect key="frame" x="20" y="118" width="374" height="363"/>
+                                <rect key="frame" x="20" y="74" width="374" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="363" id="VI3-95-Zt1"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PUD-Fu-gaa">
                                     <size key="itemSize" width="366" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -112,36 +129,13 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="vibe" id="H6G-ay-bjk">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="session" id="H6G-ay-bjk">
                                         <rect key="frame" x="4" y="0.0" width="366" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yVt-lp-4Ej">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25:05" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDD-oC-aeR">
-                                                    <rect key="frame" x="263" y="49" width="83" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="83" id="2I0-cf-Bnx"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="26"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="jDD-oC-aeR" secondAttribute="trailing" constant="12" id="4H2-ko-Fe0"/>
-                                            <constraint firstItem="yVt-lp-4Ej" firstAttribute="leading" secondItem="H6G-ay-bjk" secondAttribute="leading" id="CMB-Uc-PKZ"/>
-                                            <constraint firstItem="yVt-lp-4Ej" firstAttribute="top" secondItem="H6G-ay-bjk" secondAttribute="top" id="Eo7-1f-75c"/>
-                                            <constraint firstItem="yVt-lp-4Ej" firstAttribute="centerY" secondItem="jDD-oC-aeR" secondAttribute="centerY" id="IWV-Lf-r9A"/>
-                                            <constraint firstItem="jDD-oC-aeR" firstAttribute="leading" secondItem="yVt-lp-4Ej" secondAttribute="trailing" constant="23" id="MBw-sP-ijR"/>
-                                            <constraint firstItem="jDD-oC-aeR" firstAttribute="top" secondItem="H6G-ay-bjk" secondAttribute="topMargin" constant="41" id="S0l-Rr-VFC"/>
-                                            <constraint firstAttribute="bottom" secondItem="yVt-lp-4Ej" secondAttribute="bottom" id="byi-cY-hwY"/>
-                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -155,11 +149,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="y4R-y3-I7L" firstAttribute="centerX" secondItem="ipj-A2-Hgy" secondAttribute="centerX" id="MPf-Uv-Eb3"/>
-                            <constraint firstItem="y4R-y3-I7L" firstAttribute="leading" secondItem="kTV-RG-qgU" secondAttribute="leadingMargin" id="Mgh-AZ-9OE"/>
                             <constraint firstAttribute="bottom" secondItem="ipj-A2-Hgy" secondAttribute="bottom" constant="20" symbolic="YES" id="MlF-e2-YkE"/>
-                            <constraint firstItem="y4R-y3-I7L" firstAttribute="top" secondItem="JIJ-ee-K4m" secondAttribute="bottom" constant="54" id="iKz-fy-LoE"/>
-                            <constraint firstItem="y4R-y3-I7L" firstAttribute="trailing" secondItem="kTV-RG-qgU" secondAttribute="trailingMargin" id="sSI-7z-Oub"/>
+                            <constraint firstItem="y4R-y3-I7L" firstAttribute="trailing" secondItem="kTV-RG-qgU" secondAttribute="trailingMargin" id="NEw-pt-CTm"/>
+                            <constraint firstItem="y4R-y3-I7L" firstAttribute="centerX" secondItem="ipj-A2-Hgy" secondAttribute="centerX" id="bNQ-YI-hbf"/>
+                            <constraint firstItem="y4R-y3-I7L" firstAttribute="top" secondItem="JIJ-ee-K4m" secondAttribute="bottom" constant="54" id="n2g-S3-bDN"/>
+                            <constraint firstItem="ipj-A2-Hgy" firstAttribute="top" secondItem="y4R-y3-I7L" secondAttribute="bottom" constant="30" id="olv-JH-rGH"/>
+                            <constraint firstItem="y4R-y3-I7L" firstAttribute="leading" secondItem="kTV-RG-qgU" secondAttribute="leadingMargin" id="zA5-i5-jTa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Vibe" id="WIt-h4-pAV">
@@ -170,6 +165,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionOfSessions" destination="y4R-y3-I7L" id="FWj-yg-gK4"/>
                         <outlet property="startButton" destination="ipj-A2-Hgy" id="5u0-iF-U5R"/>
                     </connections>
                 </viewController>
@@ -262,6 +258,7 @@
                         <outlet property="chillButton" destination="WzM-5U-TEd" id="95c-0m-Vh5"/>
                         <outlet property="energizeButton" destination="aXl-vm-2BN" id="Ire-y8-jpd"/>
                         <outlet property="focusButton" destination="6NL-Ls-hIO" id="Ta5-Au-Igh"/>
+                        <outlet property="saveButton" destination="P0m-po-PiZ" id="XZT-rz-VhD"/>
                         <outlet property="timer" destination="vE8-l9-GEg" id="Bzk-JK-NOK"/>
                         <segue destination="zF5-Nv-0Zn" kind="presentation" identifier="saveSegue" id="bR2-9n-m06"/>
                     </connections>
@@ -314,8 +311,9 @@
         <image name="loginwithspotify" width="889" height="146"/>
         <image name="saveVibeButton" width="142" height="61"/>
         <image name="startButton" width="142" height="61"/>
+        <image name="vibetitle" width="470" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vLf-HM-ALn"/>
+        <segue reference="bR2-9n-m06"/>
     </inferredMetricsTieBreakers>
 </document>

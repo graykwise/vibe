@@ -29,9 +29,6 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
     
     func userLoggedIn() {
         updateAfterFirstLogin()
-        print("performing segue")
-
-        
         performSegue(withIdentifier: "loginToVibe", sender: self)
     }
     
@@ -59,7 +56,6 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
             self.player!.delegate = self
             try! player!.start(withClientId: auth.clientID)
             self.player!.login(withAccessToken: authSession.accessToken)
-            print("done initializing")
         }
     }
 
