@@ -13,25 +13,32 @@ class ChooseVibeViewController: UIViewController {
     @IBOutlet weak var energizeButton: UIButton!
     @IBOutlet weak var focusButton: UIButton!
     @IBOutlet weak var chillButton: UIButton!
+    @IBOutlet weak var timer: UIDatePicker!
     
     @IBAction func chillButton(_ sender: UIButton) {
         showSelectedButton(selected: sender)
+        focusButton.layer.opacity = 0.4
+        energizeButton.layer.opacity = 0.4
     }
     
     @IBAction func focusButton(_ sender: UIButton) {
         showSelectedButton(selected: sender)
+        energizeButton.layer.opacity = 0.4
+        chillButton.layer.opacity = 0.4
     }
     
     @IBAction func energizeButton(_ sender: UIButton) {
         showSelectedButton(selected: sender)
+        focusButton.layer.opacity = 0.4
+        chillButton.layer.opacity = 0.4
     }
     
     func showSelectedButton(selected: UIButton) {
-        selected.isSelected = true
-        //set the other 2 buttons to not selected
-        //still need to implement
         energizeButton.isSelected = false
         focusButton.isSelected = false
+        chillButton.isSelected = false
+        selected.isSelected = true
+        selected.layer.opacity = 1
     }
     
     
@@ -41,14 +48,13 @@ class ChooseVibeViewController: UIViewController {
     
     
     @IBAction func saveButton(_ sender: Any) {
+        print(timer.countDownDuration)
     }
-    
-    @IBOutlet weak var timer: UIDatePicker!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        timer.countDownDuration = 60.0
         // Do any additional setup after loading the view.
     }
 
