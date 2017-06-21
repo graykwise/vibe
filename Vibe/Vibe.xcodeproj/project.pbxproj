@@ -20,6 +20,7 @@
 		BC0B956A1EF9B8D20073E0A6 /* ChooseVibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95691EF9B8D20073E0A6 /* ChooseVibeViewController.swift */; };
 		BC0B956E1EF9B9290073E0A6 /* VibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B956D1EF9B9290073E0A6 /* VibeViewController.swift */; };
 		BCC38F121EFAA6E6002AED3B /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC38F111EFAA6E6002AED3B /* SessionDelegate.swift */; };
+		BCC38F141EFB0645002AED3B /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC38F131EFB0645002AED3B /* SessionTableViewCell.swift */; };
 		E22543D61EFA8D7500C2E798 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E22543D31EFA8D7500C2E798 /* SpotifyAudioPlayback.framework */; };
 		E22543D71EFA8D7500C2E798 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E22543D41EFA8D7500C2E798 /* SpotifyAuthentication.framework */; };
 		E22543D81EFA8D7500C2E798 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E22543D51EFA8D7500C2E798 /* SpotifyMetadata.framework */; };
@@ -43,6 +44,7 @@
 		BC0B95691EF9B8D20073E0A6 /* ChooseVibeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseVibeViewController.swift; sourceTree = "<group>"; };
 		BC0B956D1EF9B9290073E0A6 /* VibeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibeViewController.swift; sourceTree = SOURCE_ROOT; };
 		BCC38F111EFAA6E6002AED3B /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
+		BCC38F131EFB0645002AED3B /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		E22543D31EFA8D7500C2E798 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
 		E22543D41EFA8D7500C2E798 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
 		E22543D51EFA8D7500C2E798 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				BC0B956D1EF9B9290073E0A6 /* VibeViewController.swift */,
 				BC0B95251EF898370073E0A6 /* LoginViewController.swift */,
 				BC0B95271EF898370073E0A6 /* Main.storyboard */,
+				BCC38F131EFB0645002AED3B /* SessionTableViewCell.swift */,
 				BC0B95691EF9B8D20073E0A6 /* ChooseVibeViewController.swift */,
 				BCC38F111EFAA6E6002AED3B /* SessionDelegate.swift */,
 				BC0B95651EF9AA310073E0A6 /* Session.swift */,
@@ -197,6 +200,7 @@
 			files = (
 				BC0B956E1EF9B9290073E0A6 /* VibeViewController.swift in Sources */,
 				BC0B956A1EF9B8D20073E0A6 /* ChooseVibeViewController.swift in Sources */,
+				BCC38F141EFB0645002AED3B /* SessionTableViewCell.swift in Sources */,
 				BC0B95661EF9AA310073E0A6 /* Session.swift in Sources */,
 				BCC38F121EFAA6E6002AED3B /* SessionDelegate.swift in Sources */,
 				BC0B95681EF9AC680073E0A6 /* MusicPicker.swift in Sources */,
