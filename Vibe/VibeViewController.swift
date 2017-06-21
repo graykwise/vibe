@@ -10,9 +10,9 @@ import UIKit
 import AVFoundation
 import SafariServices
 
-class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate, SessionDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate, SessionDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var collectionOfSessions: UICollectionView!
+    @IBOutlet weak var sessionTable: UITableView!
     
     var sessionArray = [Session]()
     var clock = Timer()
@@ -24,13 +24,18 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionOfSessions.dataSource = self
-        collectionOfSessions.delegate = self
+        sessionTable.dataSource = self
+        sessionTable.delegate = self
+        sessionTable.allowsSelection = true
+        sessionTable.separatorStyle = UITableViewCellSeparatorStyle.none
         // Do any additional setup after loading the view.
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "session", for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        let cell = tableView.dequeueReusableCell(withIdentifier: "session", for: indexPath) as! SessionTableViewCell
+        
+        
         var vibeName = sessionArray[indexPath.item].vibeType
         var vibePhoto = UIImage()
         if vibeName == "Chill"{
@@ -42,67 +47,33 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         if vibeName == "Energize"{
             vibePhoto = #imageLiteral(resourceName: "energizeButton1")
         }
-    
-        cell.contentView.addSubview(UIImageView.init(image: vibePhoto))
-
-        let timer = UILabel(frame: CGRect(x: cell.bounds.width - 100, y: 30, width: cell.bounds.width, height: 50))
         
+        cell.vibeImage.image = vibePhoto
+    
         //sets the label to be in hours/minutes/seconds
         //TODO: fix this it's not the right math
         var length = sessionArray[indexPath.item].timeDuration!
         let hours = length/60/60
         let minutes = length/60 - hours*60
         let seconds = length - hours*60*60 - minutes*60
-        
+        cell.time.font = UIFont(name: cell.time.font.fontName, size: 25)
+
         if(hours > 0){
-            if(minutes < 10){
-                if(seconds < 10){
-                    
-                    timer.text = "\(hours):0\(minutes):0\(seconds)"
-                }
-                else{
-                    timer.text = "\(hours):0\(minutes):\(seconds)"
-                }
-            }
-            else {
-                if(seconds < 10){
-                
-                    timer.text = "\(hours):\(minutes):0\(seconds)"
-                }
-                else{
-                    timer.text = "\(hours):\(minutes):\(seconds)"
-                }
-            }
+            cell.time.text = "\(hours)hr \(minutes)min"
         }
         else {
-            if(minutes < 10){
-                if(seconds < 10){
-                    
-                    timer.text = "\(minutes):0\(seconds)"
-                }
-                else{
-                    timer.text = "\(minutes):\(seconds)"
-                }
-            }
-            else {
-                if(seconds < 10){
-                    
-                    timer.text = "\(minutes):0\(seconds)"
-                }
-                else{
-                    timer.text = "\(minutes):\(seconds)"
-                }
-            }
-
+            cell.time.text = "\(minutes) min"
+    
         }
+    
         
-        
-        timer.font.withSize(30)
-        cell.contentView.addSubview(timer)
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sessionArray.count
     }
     
@@ -168,11 +139,29 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     
     func sessionWasSaved(session: Session) {
         //do stuff here
-        
         savedSession = session
         sessionArray.append(savedSession)
-        collectionOfSessions.reloadData()
-
+        
+        sessionTable.reloadData()
+        
+    }
+    
+    func resizeImage(image:UIImage, toTheSize size:CGSize)->UIImage{
+        
+        
+        var scale = CGFloat(max(size.width/image.size.width,
+                                size.height/image.size.height))
+        
+        var width = image.size.width * scale
+        var height = image.size.height * scale
+        
+        var rr = CGRect(x: 0, y: 0, width: width, height: height)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        image.draw(in: rr)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        return newImage!
     }
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {

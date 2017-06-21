@@ -119,26 +119,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y4R-y3-I7L">
-                                <rect key="frame" x="20" y="74" width="374" height="551"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PUD-Fu-gaa">
-                                    <size key="itemSize" width="366" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="session" id="H6G-ay-bjk">
-                                        <rect key="frame" x="4" y="0.0" width="366" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="366" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipj-A2-Hgy">
                                 <rect key="frame" x="136" y="655" width="142" height="61"/>
                                 <state key="normal" image="startButton"/>
@@ -146,15 +126,55 @@
                                     <action selector="startVibing:" destination="zF5-Nv-0Zn" eventType="touchUpInside" id="To2-1e-W4N"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bm5-Cu-YpY">
+                                <rect key="frame" x="20" y="92" width="374" height="517"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="session" rowHeight="80" id="9bn-hR-sTL" customClass="SessionTableViewCell" customModule="Vibe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9bn-hR-sTL" id="TnO-py-oUX">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSj-wg-dZH">
+                                                    <rect key="frame" x="314.66666666666674" y="30" width="33.333333333333314" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rDY-3W-BWq">
+                                                    <rect key="frame" x="0.0" y="-1" width="200" height="83"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="TjR-ht-eni"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DSj-wg-dZH" firstAttribute="centerY" secondItem="rDY-3W-BWq" secondAttribute="centerY" id="P3e-jw-yxL"/>
+                                                <constraint firstItem="rDY-3W-BWq" firstAttribute="centerY" secondItem="TnO-py-oUX" secondAttribute="centerY" id="QAo-DD-cJo"/>
+                                                <constraint firstItem="rDY-3W-BWq" firstAttribute="leading" secondItem="TnO-py-oUX" secondAttribute="leading" id="UvF-Qw-Qxv"/>
+                                                <constraint firstItem="DSj-wg-dZH" firstAttribute="centerY" secondItem="TnO-py-oUX" secondAttribute="centerY" id="fBO-aa-MM3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="DSj-wg-dZH" secondAttribute="trailing" constant="18" id="tKm-ws-Tqw"/>
+                                                <constraint firstItem="rDY-3W-BWq" firstAttribute="top" secondItem="TnO-py-oUX" secondAttribute="topMargin" constant="-9" id="zSC-dp-7xn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="time" destination="DSj-wg-dZH" id="nn4-4Y-5bS"/>
+                                            <outlet property="vibeImage" destination="rDY-3W-BWq" id="ipS-bl-LHD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ipj-A2-Hgy" secondAttribute="bottom" constant="20" symbolic="YES" id="MlF-e2-YkE"/>
-                            <constraint firstItem="y4R-y3-I7L" firstAttribute="trailing" secondItem="kTV-RG-qgU" secondAttribute="trailingMargin" id="NEw-pt-CTm"/>
-                            <constraint firstItem="y4R-y3-I7L" firstAttribute="centerX" secondItem="ipj-A2-Hgy" secondAttribute="centerX" id="bNQ-YI-hbf"/>
-                            <constraint firstItem="y4R-y3-I7L" firstAttribute="top" secondItem="JIJ-ee-K4m" secondAttribute="bottom" constant="54" id="n2g-S3-bDN"/>
-                            <constraint firstItem="ipj-A2-Hgy" firstAttribute="top" secondItem="y4R-y3-I7L" secondAttribute="bottom" constant="30" id="olv-JH-rGH"/>
-                            <constraint firstItem="y4R-y3-I7L" firstAttribute="leading" secondItem="kTV-RG-qgU" secondAttribute="leadingMargin" id="zA5-i5-jTa"/>
+                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="trailing" secondItem="kTV-RG-qgU" secondAttribute="trailingMargin" id="28k-PX-FRz"/>
+                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="top" secondItem="JIJ-ee-K4m" secondAttribute="bottom" constant="28" id="IDd-fT-dhF"/>
+                            <constraint firstAttribute="bottom" secondItem="ipj-A2-Hgy" secondAttribute="bottom" constant="20" symbolic="YES" id="WBn-QJ-I69"/>
+                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="centerX" secondItem="ipj-A2-Hgy" secondAttribute="centerX" id="hqv-zO-v4x"/>
+                            <constraint firstItem="ipj-A2-Hgy" firstAttribute="top" secondItem="Bm5-Cu-YpY" secondAttribute="bottom" constant="46" id="lCX-vU-1P1"/>
+                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="leading" secondItem="kTV-RG-qgU" secondAttribute="leadingMargin" id="m97-qR-6fT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Vibe" id="WIt-h4-pAV">
@@ -165,7 +185,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionOfSessions" destination="y4R-y3-I7L" id="FWj-yg-gK4"/>
+                        <outlet property="sessionTable" destination="Bm5-Cu-YpY" id="cE7-uT-rM2"/>
                         <outlet property="startButton" destination="ipj-A2-Hgy" id="5u0-iF-U5R"/>
                     </connections>
                 </viewController>
@@ -314,6 +334,6 @@
         <image name="vibetitle" width="470" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bR2-9n-m06"/>
+        <segue reference="vLf-HM-ALn"/>
     </inferredMetricsTieBreakers>
 </document>
