@@ -30,11 +30,10 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         sessionTable.separatorStyle = UITableViewCellSeparatorStyle.none
         // Do any additional setup after loading the view.
     }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let cell = tableView.dequeueReusableCell(withIdentifier: "session", for: indexPath) as! SessionTableViewCell
-        
         
         var vibeName = sessionArray[indexPath.item].vibeType
         var vibePhoto = UIImage()
