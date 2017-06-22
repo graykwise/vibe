@@ -20,14 +20,20 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     var player: SPTAudioStreamingController?
     var savedSession: Session!
     var selectedSession: Int!
-    
+    var indexOnPlayQueue: Int!
     var session: SPTSession!
+    
+    var currentTime: Int!
     
     @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sessionTable.layer.borderColor = UIColor.gray.cgColor
+        sessionTable.layer.borderWidth = 1
+        sessionTable.layer.backgroundColor = UIColor.purple.cgColor
         selectedSession = 0
+        indexOnPlayQueue = 0
         sessionTable.dataSource = self
         sessionTable.delegate = self
         sessionTable.allowsSelection = true
@@ -61,7 +67,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         let minutes = length/60 - hours*60
         let seconds = length - hours*60*60 - minutes*60
         cell.time.font = UIFont(name: cell.time.font.fontName, size: 25)
-
+        cell.layer.cornerRadius = 10
         if(hours > 0){
             cell.time.text = "\(hours)hr \(minutes)min"
         }
@@ -108,15 +114,17 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         }
     }
     
-
+  
+    
     @IBAction func startVibing(_ sender: Any) {
-        
-        if player?.loggedIn == true {
-            print("logged in")
-        }
-        if player?.loggedIn == false {
-            print("not logged in")
-        }
+        indexOnPlayQueue = selectedSession
+        playMusic(playingSession: sessionArray[selectedSession])
+    }
+    
+    func playMusic(playingSession: Session) {
+
+        currentTime = playingSession.timeDuration
+        clock = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil, repeats: true)
         
         self.player?.setShuffle(true, callback: { (error) in
             if (error != nil) {
@@ -126,25 +134,40 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
                 if (error != nil) {
                     print("not set to playing, but shuffled")
                 }
+                print("about to play")
+                self.player?.playSpotifyURI(playingSession.playlistURI, startingWith: 9, startingWithPosition: 0, callback: { (error) in
+                    print("in callback")
+                    
+                    if (error == nil) {
+                        print("playing!")
+                    }
+                    else {
+                        print("Error in playSpotifyURI: \(error)")
+                    }
+
+                })
             })
         })
         
-        self.player?.playSpotifyURI(sessionArray[selectedSession].playlistURI, startingWith: 9, startingWithPosition: 0, callback: { (error) in
-            print("in callback")
-
-            if (error == nil) {
-                print("playing!")
-            }
-            else {
-                print("Error in playSpotifyURI: \(error)")
+    }
+    
+    
+    func stopMusic(){
+        print("Reached zero")
+        clock.invalidate()
+        //stop music
+        self.player?.setIsPlaying(false, callback: { (error) in
+            if (error != nil) {
+                print("not set to stopped")
             }
         })
+        if indexOnPlayQueue + 1 < sessionArray.count {
+            indexOnPlayQueue = indexOnPlayQueue + 1
+            playMusic(playingSession: sessionArray[indexOnPlayQueue])
+        }
         
-        time = sessionArray[selectedSession].timeDuration
-        
-        
-        clock = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(OtherViewController.countdown), userInfo: nil, repeats: true)
     }
+    
     /*
     // MARK: - Navigation
 
@@ -186,21 +209,17 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         return newImage!
     }
     
+    func getCurrentTime() -> Int{
+        return currentTime
+    }
+    
     
     func countdown() {
-        
-        time = time - 1
-        print(time)
-        if time == 0 {
-            print("Reached zero")
-            clock.invalidate()
-            time = 20
-            //stop music
-            self.player?.setIsPlaying(false, callback: { (error) in
-                if (error != nil) {
-                    print("not set to stopped")
-                }
-            })
+        print("in countdown")
+        self.currentTime = self.currentTime - 1
+        print(currentTime)
+        if currentTime == 0 {
+            stopMusic()
         }
     }
 }

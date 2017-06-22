@@ -121,31 +121,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipj-A2-Hgy">
-                                <rect key="frame" x="116.5" y="586" width="142" height="61"/>
+                                <rect key="frame" x="117" y="586" width="142" height="61"/>
                                 <state key="normal" image="startButton"/>
                                 <connections>
                                     <action selector="startVibing:" destination="zF5-Nv-0Zn" eventType="touchUpInside" id="To2-1e-W4N"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bm5-Cu-YpY">
-                                <rect key="frame" x="16" y="92" width="343" height="448"/>
+                                <rect key="frame" x="16" y="92" width="343" height="411"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="session" rowHeight="80" id="9bn-hR-sTL" customClass="SessionTableViewCell" customModule="Vibe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9bn-hR-sTL" id="TnO-py-oUX">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rDY-3W-BWq">
-                                                    <rect key="frame" x="8" y="2" width="182" height="74.5"/>
+                                                    <rect key="frame" x="8" y="2" width="182" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="182" id="7kc-vR-AWv"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25hr 10min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSj-wg-dZH">
-                                                    <rect key="frame" x="239.5" y="25" width="126.5" height="30"/>
+                                                    <rect key="frame" x="209" y="25" width="126" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -156,6 +156,7 @@
                                                 <constraint firstItem="rDY-3W-BWq" firstAttribute="leading" secondItem="TnO-py-oUX" secondAttribute="leadingMargin" id="A7Q-Sh-lRt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="DSj-wg-dZH" secondAttribute="trailing" constant="5.6843418860808015e-14" id="Zrx-ix-I5f"/>
                                                 <constraint firstItem="DSj-wg-dZH" firstAttribute="centerY" secondItem="rDY-3W-BWq" secondAttribute="centerY" id="iIo-jb-d7p"/>
+                                                <constraint firstItem="DSj-wg-dZH" firstAttribute="leading" secondItem="rDY-3W-BWq" secondAttribute="trailing" constant="19" id="q5J-kf-ogL"/>
                                                 <constraint firstItem="rDY-3W-BWq" firstAttribute="top" secondItem="TnO-py-oUX" secondAttribute="topMargin" constant="-6" id="ue3-T4-r18"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -169,12 +170,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="trailing" secondItem="kTV-RG-qgU" secondAttribute="trailingMargin" id="28k-PX-FRz"/>
-                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="top" secondItem="JIJ-ee-K4m" secondAttribute="bottom" constant="28" id="IDd-fT-dhF"/>
+                            <constraint firstItem="ipj-A2-Hgy" firstAttribute="top" secondItem="Bm5-Cu-YpY" secondAttribute="bottom" constant="83" id="Eco-di-bfl"/>
+                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="top" secondItem="JIJ-ee-K4m" secondAttribute="bottom" constant="72" id="EdT-Nj-Mxk"/>
+                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="centerX" secondItem="ipj-A2-Hgy" secondAttribute="centerX" id="Pcb-NF-vM1"/>
                             <constraint firstAttribute="bottom" secondItem="ipj-A2-Hgy" secondAttribute="bottom" constant="20" symbolic="YES" id="WBn-QJ-I69"/>
-                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="centerX" secondItem="ipj-A2-Hgy" secondAttribute="centerX" id="hqv-zO-v4x"/>
-                            <constraint firstItem="ipj-A2-Hgy" firstAttribute="top" secondItem="Bm5-Cu-YpY" secondAttribute="bottom" constant="46" id="lCX-vU-1P1"/>
-                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="leading" secondItem="kTV-RG-qgU" secondAttribute="leadingMargin" id="m97-qR-6fT"/>
+                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="trailing" secondItem="kTV-RG-qgU" secondAttribute="trailingMargin" id="YZH-0m-B21"/>
+                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="leading" secondItem="kTV-RG-qgU" secondAttribute="leadingMargin" id="Ykt-fY-mQg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Vibe" id="WIt-h4-pAV">
@@ -191,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HrK-4F-42k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3921.739130434783" y="36.684782608695656"/>
+            <point key="canvasLocation" x="3920.8000000000002" y="36.431784107946029"/>
         </scene>
         <!--Vibe-->
         <scene sceneID="RXl-fi-IzQ">
