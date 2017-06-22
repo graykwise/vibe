@@ -28,6 +28,8 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
+        self.navigationItem.titleView = imageViewThing
         print(initialURL)
         let initialRequest = URLRequest(url: self.initialURL)
         self.webView = UIWebView(frame: self.view.bounds)

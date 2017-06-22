@@ -10,6 +10,7 @@ import UIKit
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -27,8 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        UIApplication.shared.statusBarStyle = .lightContent
         SPTAuth.defaultInstance().clientID = clientID
         SPTAuth.defaultInstance().redirectURL = URL(string:callbackURL)
         //SPTAuth.defaultInstance().tokenSwapURL = URL(string:kTokenSwapURL)

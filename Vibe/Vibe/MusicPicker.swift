@@ -29,7 +29,7 @@ class MusicPicker {
             //Deep Focus
             playlistName = "spotify:user:spotify:playlist:37i9dQZF1DWZeKCadgRdKQ"
             break
-        case "Energize":
+        case "Sweat":
             //Set playlist for chill vibe
             //Energizing hits
             playlistName = "spotify:user:spotify:playlist:37i9dQZF1DWSWboXWl2xwB"
