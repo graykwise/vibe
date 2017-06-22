@@ -27,6 +27,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     
     @IBOutlet weak var startButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sessionTable.layer.borderColor = UIColor.gray.cgColor
@@ -89,6 +90,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSession = indexPath.item
+        startButton.setImage(#imageLiteral(resourceName: "play"), for: UIControlState.normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,15 +116,31 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         }
     }
     
-  
+    @IBAction func skipPrev(_ sender: UIButton) {
+        player?.skipPrevious({
+        error in
+        
+        })
+    }
+    
+    @IBAction func skipNext(_ sender: UIButton) {
+        player?.skipNext({
+        error in
+            
+        })
+    }
+    
     
     @IBAction func startVibing(_ sender: Any) {
+        if(startButton.imageView?.image == #imageLiteral(resourceName: "play"))
+        {
         indexOnPlayQueue = selectedSession
         playMusic(playingSession: sessionArray[selectedSession])
+        }
     }
     
     func playMusic(playingSession: Session) {
-
+        startButton.setImage(#imageLiteral(resourceName: "pause"), for: UIControlState.normal)
         currentTime = playingSession.timeDuration
         clock = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil, repeats: true)
         
@@ -219,6 +237,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         self.currentTime = self.currentTime - 1
         print(currentTime)
         if currentTime == 0 {
+            startButton.setImage(#imageLiteral(resourceName: "play"), for: UIControlState.normal)
             stopMusic()
         }
     }

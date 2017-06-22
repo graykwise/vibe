@@ -121,14 +121,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipj-A2-Hgy">
-                                <rect key="frame" x="117" y="586" width="142" height="61"/>
-                                <state key="normal" image="startButton"/>
+                                <rect key="frame" x="151" y="575" width="72" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" image="play"/>
                                 <connections>
                                     <action selector="startVibing:" destination="zF5-Nv-0Zn" eventType="touchUpInside" id="To2-1e-W4N"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bm5-Cu-YpY">
-                                <rect key="frame" x="16" y="92" width="343" height="411"/>
+                                <rect key="frame" x="16" y="92" width="343" height="408"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="session" rowHeight="80" id="9bn-hR-sTL" customClass="SessionTableViewCell" customModule="Vibe" customModuleProvider="target">
@@ -167,15 +168,43 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCf-rT-Sm5">
+                                <rect key="frame" x="243" y="595" width="54" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ooe-Jb-sGp"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="next"/>
+                                <connections>
+                                    <action selector="skipNext:" destination="zF5-Nv-0Zn" eventType="touchUpInside" id="yKg-ym-jvc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJF-wz-WDQ">
+                                <rect key="frame" x="75" y="595" width="52" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="52" id="XQZ-8v-y7s"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="prev"/>
+                                <connections>
+                                    <action selector="skipPrev:" destination="zF5-Nv-0Zn" eventType="touchUpInside" id="n0d-YU-UkT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ipj-A2-Hgy" firstAttribute="top" secondItem="Bm5-Cu-YpY" secondAttribute="bottom" constant="83" id="Eco-di-bfl"/>
+                            <constraint firstItem="ipj-A2-Hgy" firstAttribute="centerX" secondItem="Bm5-Cu-YpY" secondAttribute="centerX" id="5Qk-71-Edw"/>
+                            <constraint firstItem="F3h-DB-LUT" firstAttribute="top" secondItem="pCf-rT-Sm5" secondAttribute="bottom" constant="42" id="BMD-5l-meW"/>
                             <constraint firstItem="Bm5-Cu-YpY" firstAttribute="top" secondItem="JIJ-ee-K4m" secondAttribute="bottom" constant="72" id="EdT-Nj-Mxk"/>
-                            <constraint firstItem="Bm5-Cu-YpY" firstAttribute="centerX" secondItem="ipj-A2-Hgy" secondAttribute="centerX" id="Pcb-NF-vM1"/>
-                            <constraint firstAttribute="bottom" secondItem="ipj-A2-Hgy" secondAttribute="bottom" constant="20" symbolic="YES" id="WBn-QJ-I69"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pCf-rT-Sm5" secondAttribute="trailing" constant="62" id="GOe-u9-hi6"/>
+                            <constraint firstItem="F3h-DB-LUT" firstAttribute="top" secondItem="ZJF-wz-WDQ" secondAttribute="bottom" constant="40" id="UIe-su-MdZ"/>
                             <constraint firstItem="Bm5-Cu-YpY" firstAttribute="trailing" secondItem="kTV-RG-qgU" secondAttribute="trailingMargin" id="YZH-0m-B21"/>
                             <constraint firstItem="Bm5-Cu-YpY" firstAttribute="leading" secondItem="kTV-RG-qgU" secondAttribute="leadingMargin" id="Ykt-fY-mQg"/>
+                            <constraint firstItem="pCf-rT-Sm5" firstAttribute="leading" secondItem="ipj-A2-Hgy" secondAttribute="trailing" constant="20" id="gfC-I6-l64"/>
+                            <constraint firstItem="ZJF-wz-WDQ" firstAttribute="centerY" secondItem="ipj-A2-Hgy" secondAttribute="centerY" id="mSL-Hj-euh"/>
+                            <constraint firstItem="ipj-A2-Hgy" firstAttribute="top" secondItem="Bm5-Cu-YpY" secondAttribute="bottom" constant="75" id="nPV-HN-dH6"/>
+                            <constraint firstItem="ZJF-wz-WDQ" firstAttribute="top" secondItem="pCf-rT-Sm5" secondAttribute="top" id="oyq-RA-OjU"/>
+                            <constraint firstItem="ZJF-wz-WDQ" firstAttribute="leading" secondItem="kTV-RG-qgU" secondAttribute="leadingMargin" constant="59" id="pS7-jK-LQm"/>
+                            <constraint firstItem="ipj-A2-Hgy" firstAttribute="leading" secondItem="ZJF-wz-WDQ" secondAttribute="trailing" constant="24" id="xcc-54-Kmm"/>
+                            <constraint firstAttribute="bottom" secondItem="ipj-A2-Hgy" secondAttribute="bottom" constant="20" symbolic="YES" id="zhc-kz-q8l"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Vibe" id="WIt-h4-pAV">
@@ -364,8 +393,10 @@
         <image name="energizeButton1" width="241" height="119"/>
         <image name="focusButton1" width="237" height="116"/>
         <image name="loginwithspotify" width="889" height="146"/>
+        <image name="next" width="182" height="107"/>
+        <image name="play" width="64" height="64"/>
+        <image name="prev" width="182" height="107"/>
         <image name="saveVibeButton" width="142" height="61"/>
-        <image name="startButton" width="142" height="61"/>
         <image name="vibetitle" width="470" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
