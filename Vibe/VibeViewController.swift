@@ -19,15 +19,20 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     var time: Int!
     var player: SPTAudioStreamingController?
     var savedSession: Session!
+    var selectedSession: Int!
+    
+    var session: SPTSession!
     
     @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedSession = 0
         sessionTable.dataSource = self
         sessionTable.delegate = self
         sessionTable.allowsSelection = true
         sessionTable.separatorStyle = UITableViewCellSeparatorStyle.none
+        initializePlayer(authSession: session)
         // Do any additional setup after loading the view.
     }
         
@@ -76,6 +81,10 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         return sessionArray.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedSession = indexPath.item
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,6 +95,16 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
             let navigationController = segue.destination as! UINavigationController
             let newViewController = navigationController.topViewController as! ChooseVibeViewController
             newViewController.delegate = self
+        }
+    }
+    
+    func initializePlayer(authSession: SPTSession){
+        if self.player == nil {
+            self.player = SPTAudioStreamingController.sharedInstance()
+            self.player!.playbackDelegate = self
+            self.player!.delegate = self
+            try! player!.start(withClientId: SPTAuth.defaultInstance().clientID)
+            self.player!.login(withAccessToken: authSession.accessToken)
         }
     }
     
@@ -110,7 +129,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
             })
         })
         
-        self.player?.playSpotifyURI(sessionArray[0].playlistURI, startingWith: 9, startingWithPosition: 0, callback: { (error) in
+        self.player?.playSpotifyURI(sessionArray[selectedSession].playlistURI, startingWith: 9, startingWithPosition: 0, callback: { (error) in
             print("in callback")
 
             if (error == nil) {
@@ -121,7 +140,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
             }
         })
         
-        time = sessionArray[0].timeDuration
+        time = sessionArray[selectedSession].timeDuration
         
         
         clock = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(OtherViewController.countdown), userInfo: nil, repeats: true)
@@ -145,6 +164,10 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         
     }
     
+    func handleNewSession(_ session: SPTSession) {
+        self.session = session
+    }
+    
     func resizeImage(image:UIImage, toTheSize size:CGSize)->UIImage{
         
         
@@ -161,10 +184,6 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
         return newImage!
-    }
-    
-    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
-        //This is from the delegate and we need it to possibly play music
     }
     
     
