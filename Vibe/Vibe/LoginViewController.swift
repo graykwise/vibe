@@ -24,10 +24,11 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
+        self.navigationItem.titleView = imageViewThing
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.sessionUpdatedNotification), name: NSNotification.Name(rawValue: "sessionUpdated"), object: nil)
         self.firstLoad = true
-
     }
     
     func getAuthViewController(withURL url: URL) -> UIViewController {

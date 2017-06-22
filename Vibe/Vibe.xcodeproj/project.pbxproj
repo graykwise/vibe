@@ -14,7 +14,6 @@
 		BC0B952E1EF898370073E0A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC0B952C1EF898370073E0A6 /* LaunchScreen.storyboard */; };
 		BC0B953F1EF899420073E0A6 /* BridgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0B953E1EF899420073E0A6 /* BridgeViewController.m */; };
 		BC0B95421EF93A0E0073E0A6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC0B95411EF93A0E0073E0A6 /* AVFoundation.framework */; };
-		BC0B95641EF9638A0073E0A6 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95631EF9638A0073E0A6 /* OtherViewController.swift */; };
 		BC0B95661EF9AA310073E0A6 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95651EF9AA310073E0A6 /* Session.swift */; };
 		BC0B95681EF9AC680073E0A6 /* MusicPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95671EF9AC680073E0A6 /* MusicPicker.swift */; };
 		BC0B956A1EF9B8D20073E0A6 /* ChooseVibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B95691EF9B8D20073E0A6 /* ChooseVibeViewController.swift */; };
@@ -39,7 +38,6 @@
 		BC0B953D1EF899420073E0A6 /* BridgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeViewController.h; sourceTree = "<group>"; };
 		BC0B953E1EF899420073E0A6 /* BridgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeViewController.m; sourceTree = "<group>"; };
 		BC0B95411EF93A0E0073E0A6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		BC0B95631EF9638A0073E0A6 /* OtherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		BC0B95651EF9AA310073E0A6 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		BC0B95671EF9AC680073E0A6 /* MusicPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPicker.swift; sourceTree = "<group>"; };
 		BC0B95691EF9B8D20073E0A6 /* ChooseVibeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseVibeViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 				BCC38F111EFAA6E6002AED3B /* SessionDelegate.swift */,
 				BC0B95651EF9AA310073E0A6 /* Session.swift */,
 				BC0B95671EF9AC680073E0A6 /* MusicPicker.swift */,
-				BC0B95631EF9638A0073E0A6 /* OtherViewController.swift */,
 				BC0B952A1EF898370073E0A6 /* Assets.xcassets */,
 				BC0B952C1EF898370073E0A6 /* LaunchScreen.storyboard */,
 				BC0B952F1EF898370073E0A6 /* Info.plist */,
@@ -209,7 +206,6 @@
 				BCC38F121EFAA6E6002AED3B /* SessionDelegate.swift in Sources */,
 				BC0B95681EF9AC680073E0A6 /* MusicPicker.swift in Sources */,
 				BC0B953F1EF899420073E0A6 /* BridgeViewController.m in Sources */,
-				BC0B95641EF9638A0073E0A6 /* OtherViewController.swift in Sources */,
 				BC0B95261EF898370073E0A6 /* LoginViewController.swift in Sources */,
 				BC0B95241EF898370073E0A6 /* AppDelegate.swift in Sources */,
 			);

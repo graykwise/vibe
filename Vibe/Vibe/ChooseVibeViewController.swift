@@ -14,7 +14,7 @@ class ChooseVibeViewController: UIViewController {
     var selectedSession: Session!
     
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var energizeButton: UIButton!
+    @IBOutlet weak var sweatButton: UIButton!
     @IBOutlet weak var focusButton: UIButton!
     @IBOutlet weak var chillButton: UIButton!
     @IBOutlet weak var timer: UIDatePicker!
@@ -22,6 +22,8 @@ class ChooseVibeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
+        self.navigationItem.titleView = imageViewThing
         timer.countDownDuration = 60.0
         saveButton.isEnabled = false
         // Do any additional setup after loading the view.
@@ -35,7 +37,7 @@ class ChooseVibeViewController: UIViewController {
     @IBAction func chillButton(_ sender: UIButton) {
         showSelectedButton(selected: sender)
         focusButton.layer.opacity = 0.4
-        energizeButton.layer.opacity = 0.4
+        sweatButton.layer.opacity = 0.4
         
         selectedVibe = "Chill"
         saveButton.isEnabled = true
@@ -44,7 +46,7 @@ class ChooseVibeViewController: UIViewController {
     
     @IBAction func focusButton(_ sender: UIButton) {
         showSelectedButton(selected: sender)
-        energizeButton.layer.opacity = 0.4
+        sweatButton.layer.opacity = 0.4
         chillButton.layer.opacity = 0.4
         
         selectedVibe = "Focus"
@@ -52,17 +54,17 @@ class ChooseVibeViewController: UIViewController {
         
     }
     
-    @IBAction func energizeButton(_ sender: UIButton) {
+    @IBAction func sweatButton(_ sender: UIButton) {
         showSelectedButton(selected: sender)
         focusButton.layer.opacity = 0.4
         chillButton.layer.opacity = 0.4
         
-        selectedVibe = "Energize"
+        selectedVibe = "Sweat"
         saveButton.isEnabled = true
     }
     
     func showSelectedButton(selected: UIButton) {
-        energizeButton.isSelected = false
+        sweatButton.isSelected = false
         focusButton.isSelected = false
         chillButton.isSelected = false
         selected.isSelected = true
