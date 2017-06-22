@@ -12,6 +12,9 @@ import SafariServices
 
 class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate, SessionDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    
+    @IBOutlet weak var splashScreen: UIImageView!
+    
     @IBOutlet weak var sessionTable: UITableView!
     
     var sessionArray = [Session]()
@@ -32,7 +35,11 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         super.viewDidLoad()
         sessionTable.layer.borderColor = UIColor.gray.cgColor
         sessionTable.layer.borderWidth = 1
-        sessionTable.layer.backgroundColor = UIColor.purple.cgColor
+        sessionTable.layer.cornerRadius = 10
+        sessionTable.backgroundColor = UIColor.init(red: 43, green: 69, blue: 112, alpha: 1)
+        sessionTable.isOpaque = false
+        sessionTable.layer.backgroundColor = UIColor.init(red: 43, green: 69, blue: 112, alpha: 1).cgColor
+        sessionTable.backgroundView = nil
         selectedSession = 0
         indexOnPlayQueue = 0
         sessionTable.dataSource = self
@@ -41,6 +48,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         sessionTable.separatorStyle = UITableViewCellSeparatorStyle.none
         initializePlayer(authSession: session)
         // Do any additional setup after loading the view.
+        splashScreen.isHidden = false
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,6 +112,10 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
             let newViewController = navigationController.topViewController as! ChooseVibeViewController
             newViewController.delegate = self
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
     }
     
     func initializePlayer(authSession: SPTSession){
@@ -200,7 +212,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         //do stuff here
         savedSession = session
         sessionArray.append(savedSession)
-        
+        splashScreen.isHidden = true
         sessionTable.reloadData()
         
     }

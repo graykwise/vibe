@@ -131,12 +131,13 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bm5-Cu-YpY">
                                 <rect key="frame" x="16" y="92" width="343" height="408"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.16862745098039217" green="0.27058823529411763" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="session" rowHeight="80" id="9bn-hR-sTL" customClass="SessionTableViewCell" customModule="Vibe" customModuleProvider="target">
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="session" rowHeight="80" id="9bn-hR-sTL" customClass="SessionTableViewCell" customModule="Vibe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9bn-hR-sTL" id="TnO-py-oUX">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rDY-3W-BWq">
@@ -161,6 +162,7 @@
                                                 <constraint firstItem="rDY-3W-BWq" firstAttribute="top" secondItem="TnO-py-oUX" secondAttribute="topMargin" constant="-6" id="ue3-T4-r18"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.16862745100000001" green="0.27058823529999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="time" destination="DSj-wg-dZH" id="nn4-4Y-5bS"/>
                                             <outlet property="vibeImage" destination="rDY-3W-BWq" id="ipS-bl-LHD"/>
@@ -188,6 +190,10 @@
                                     <action selector="skipPrev:" destination="zF5-Nv-0Zn" eventType="touchUpInside" id="n0d-YU-UkT"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashscreen" translatesAutoresizingMaskIntoConstraints="NO" id="gUI-xQ-EO5">
+                                <rect key="frame" x="16" y="107" width="343" height="408"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -216,6 +222,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="sessionTable" destination="Bm5-Cu-YpY" id="cE7-uT-rM2"/>
+                        <outlet property="splashScreen" destination="gUI-xQ-EO5" id="EFy-9h-jQy"/>
                         <outlet property="startButton" destination="ipj-A2-Hgy" id="5u0-iF-U5R"/>
                     </connections>
                 </viewController>
@@ -397,6 +404,7 @@
         <image name="play" width="64" height="64"/>
         <image name="prev" width="182" height="107"/>
         <image name="saveVibeButton" width="142" height="61"/>
+        <image name="splashscreen" width="709" height="844"/>
         <image name="vibetitle" width="470" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
