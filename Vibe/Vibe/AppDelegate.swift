@@ -22,12 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let tokenSwapURL = "http://localhost:1234/swap"
     let tokenRefreshServiceURL = "http://localhost:1234/refresh"
     let sessionUserDefaultsKey = "SpotifySession"
+    var orientationLock = UIInterfaceOrientationMask.portrait
     
     func delay(_ delay:Double, closure:@escaping ()->()) {
         DispatchQueue.main.asyncAfter(
             deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.orientationLock
+    }
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

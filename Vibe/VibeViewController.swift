@@ -13,8 +13,11 @@ import SafariServices
 class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate, SessionDelegate, UITableViewDelegate, UITableViewDataSource {
 
     
+    @IBOutlet weak var splashScreen: UIImageView!
+    
     @IBOutlet weak var sessionTable: UITableView!
     @IBOutlet weak var prevButton: UIButton!
+    @IBOutlet weak var bigTimer: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var currentSong: UILabel!
@@ -30,17 +33,18 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     var indexOnPlayQueue: Int!
     var session: SPTSession!
     var currentTime: Int!
+    var currentPlaylistLength: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        currentPlaylistLength = 0
         sessionTable.layer.borderColor = UIColor.gray.cgColor
         sessionTable.layer.borderWidth = 0
         sessionTable.layer.cornerRadius = 0
-//        sessionTable.backgroundView?.backgroundColor = UIColor.init(red: 191, green: 217, blue: 243, alpha: 1)
-//        sessionTable.backgroundColor = UIColor.init(red: 191, green: 217, blue: 243, alpha: 1)
         sessionTable.isHidden = true
         selectedSession = 0
+        bigTimer.isHidden = true
         indexOnPlayQueue = 0
         sessionTable.dataSource = self
         sessionTable.delegate = self
@@ -52,9 +56,10 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         nextButton.isHidden = true
         currentSong.isHidden = true
         currentArtist.isHidden = true
-        
+        splashScreen.isHidden = false
         let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
         self.navigationItem.titleView = imageViewThing
+        
     }
     
     func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChange metadata: SPTPlaybackMetadata!) {
@@ -71,13 +76,13 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         var vibeName = sessionArray[indexPath.item].vibeType
         var vibePhoto = UIImage()
         if vibeName == "Chill"{
-            vibePhoto = #imageLiteral(resourceName: "chillButton")
+            vibePhoto = #imageLiteral(resourceName: "chillB")
         }
         if vibeName == "Focus"{
-            vibePhoto = #imageLiteral(resourceName: "focusButton")
+            vibePhoto = #imageLiteral(resourceName: "focusB")
         }
         if vibeName == "Sweat"{
-            vibePhoto = #imageLiteral(resourceName: "sweatButton")
+            vibePhoto = #imageLiteral(resourceName: "energizeB")
         }
         
         cell.vibeImage.image = vibePhoto
@@ -91,10 +96,10 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         //cell.time.font = UIFont(name: cell.time.font.fontName, size: 25)
         cell.layer.cornerRadius = 0
         if(hours > 0){
-            //cell.time.text = "\(hours)hr \(minutes)min"
+            cell.time.text = "\(hours)hr \(minutes)min"
         }
         else {
-            //cell.time.text = "\(minutes) min"
+            cell.time.text = "\(minutes) min"
     
         }
     
@@ -106,12 +111,23 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if sessionArray.count == 0 {
+            startButton.isEnabled = false
+            nextButton.isEnabled = false
+            prevButton.isEnabled = false
+        }
+        else {
+            startButton.isEnabled = true
+            nextButton.isEnabled = true
+            prevButton.isEnabled = true
+        }
+        
         return sessionArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSession = indexPath.item
-        startButton.setImage(#imageLiteral(resourceName: "playdark"), for: UIControlState.normal)
+        startButton.setImage(#imageLiteral(resourceName: "playButton"), for: UIControlState.normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -125,6 +141,23 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
             let newViewController = navigationController.topViewController as! ChooseVibeViewController
             newViewController.delegate = self
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            sessionArray.remove(at: indexPath.item)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            stopMusic()
+            bigTimer.isHidden = true
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Kill Vibe"
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -158,20 +191,26 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         })
     }
     
-    
     @IBAction func startVibing(_ sender: Any) {
-        if(startButton.imageView?.image == #imageLiteral(resourceName: "playdark"))
+        if(startButton.imageView?.image == #imageLiteral(resourceName: "playButton"))
         {
+            startButton.setImage(#imageLiteral(resourceName: "stopButton"), for: UIControlState.normal)
             currentSong.isHidden = false
             currentArtist.isHidden = false
             indexOnPlayQueue = selectedSession
             playMusic(playingSession: sessionArray[selectedSession])
         }
+        else {
+            startButton.setImage(#imageLiteral(resourceName: "playButton"), for: UIControlState.normal)
+            currentSong.text = "Start a new vibe!"
+            currentArtist.text = "You know you want to..."
+            killVibe()
+        }
     }
     
     func playMusic(playingSession: Session) {
-        startButton.setImage(#imageLiteral(resourceName: "kill"), for: UIControlState.normal)
         currentTime = playingSession.timeDuration
+        var random = arc4random_uniform(26)
         clock = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil, repeats: true)
         
         self.player?.setShuffle(true, callback: { (error) in
@@ -183,7 +222,7 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
                     print("not set to playing, but shuffled")
                 }
                 print("about to play")
-                self.player?.playSpotifyURI(playingSession.playlistURI, startingWith: 9, startingWithPosition: 0, callback: { (error) in
+                self.player?.playSpotifyURI(playingSession.playlistURI, startingWith: UInt(random), startingWithPosition: 0, callback: { (error) in
                     print("in callback")
                     
                     if (error == nil) {
@@ -232,6 +271,8 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         prevButton.isHidden = false
         nextButton.isHidden = false
                 //do stuff here
+        splashScreen.isHidden = true
+        bigTimer.isHidden = false
         sessionTable.isHidden = false
         savedSession = session
         sessionArray.append(savedSession)
@@ -265,14 +306,74 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         return currentTime
     }
     
+    func killVibe() {
+        clock.invalidate()
+        //stop music
+        self.player?.setIsPlaying(false, callback: { (error) in
+            if (error != nil) {
+                print("not set to stopped")
+            }
+        })
+        currentTime = sessionArray[indexOnPlayQueue].timeDuration
+        updateTimeLabel()
+    }
+    
     
     func countdown() {
+
         print("in countdown")
         self.currentTime = self.currentTime - 1
+        updateTimeLabel()
+
         print(currentTime)
         if currentTime == 0 {
-            startButton.setImage(#imageLiteral(resourceName: "playdark"), for: UIControlState.normal)
+            startButton.setImage(#imageLiteral(resourceName: "playButton"), for: UIControlState.normal)
             stopMusic()
+        }
+    }
+    
+    func updateTimeLabel() {
+        let thehours = currentTime/60/60
+        let theminutes = currentTime/60 - thehours*60
+        let theseconds = currentTime - thehours*60*60 - theminutes*60
+        
+        if(thehours > 0){
+            if (theminutes < 10) {
+                if theseconds < 10 {
+                    bigTimer.text = "\(thehours):0\(theminutes):0\(theseconds)"
+                    
+                }
+                else {
+                    bigTimer.text = "\(thehours):0\(theminutes):\(theseconds)"
+                }
+            }
+            else
+            {
+                if theseconds < 10 {
+                    bigTimer.text = "\(thehours):\(theminutes):0\(theseconds)"
+                    
+                }
+                else {
+                    bigTimer.text = "\(thehours):\(theminutes):\(theseconds)"
+                }
+                
+            }
+        }
+        else {
+            if (theminutes > 0) {
+                if theseconds < 10 {
+                    bigTimer.text = "\(theminutes):0\(theseconds)"
+                    
+                }
+                else {
+                    bigTimer.text = "\(theminutes):\(theseconds)"
+                }
+            }
+            else
+            {
+                bigTimer.text = "\(theseconds)"
+            }
+            
         }
     }
 }
