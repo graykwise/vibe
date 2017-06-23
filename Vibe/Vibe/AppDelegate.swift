@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             SPTAuth.defaultInstance().handleAuthCallback(withTriggeredAuthURL: url) { error, session in
                 // This is the callback that'll be triggered when auth is completed (or fails).
                 if error != nil {
-                    print("*** Auth error: \(error)")
+                    print("*** Auth error: \(String(describing: error))")
                     return
                 }
                 else {

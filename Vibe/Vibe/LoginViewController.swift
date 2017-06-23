@@ -73,7 +73,6 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
     
     func sessionUpdatedNotification(_ notification: Notification) {
         let auth = SPTAuth.defaultInstance()
-        print(auth?.session)
         session = auth?.session
         self.presentedViewController?.dismiss(animated: true, completion: { _ in })
         if auth!.session != nil && auth!.session.isValid() {
@@ -118,7 +117,7 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
         SPTAuth.defaultInstance().renewSession(SPTAuth.defaultInstance().session) { error, session in
             SPTAuth.defaultInstance().session = session
             if error != nil {
-                print("*** Error renewing session: \(error)")
+                print("*** Error renewing session: \(String(describing: error))")
                 return
             }
             self.showPlayer()
