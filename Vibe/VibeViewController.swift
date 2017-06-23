@@ -192,6 +192,8 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
     }
     
     @IBAction func startVibing(_ sender: Any) {
+        bigTimer.isHidden = false
+
         if(startButton.imageView?.image == #imageLiteral(resourceName: "playButton"))
         {
             startButton.setImage(#imageLiteral(resourceName: "stopButton"), for: UIControlState.normal)
@@ -272,7 +274,6 @@ class VibeViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, S
         nextButton.isHidden = false
                 //do stuff here
         splashScreen.isHidden = true
-        bigTimer.isHidden = false
         sessionTable.isHidden = false
         savedSession = session
         sessionArray.append(savedSession)
