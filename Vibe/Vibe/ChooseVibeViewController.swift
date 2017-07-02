@@ -22,8 +22,8 @@ class ChooseVibeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
-        self.navigationItem.titleView = imageViewThing
+//        let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
+//        self.navigationItem.titleView = imageViewThing
         timer.countDownDuration = 60.0
         saveButton.isEnabled = false
         // Do any additional setup after loading the view.
@@ -98,6 +98,7 @@ class ChooseVibeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveSegue" {
+            //
             print(selectedSession.vibeType)
 
             let nextView = segue.destination as? VibeViewController

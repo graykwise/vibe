@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         
         UIApplication.shared.statusBarStyle = .lightContent
+        
         SPTAuth.defaultInstance().clientID = clientID
         SPTAuth.defaultInstance().redirectURL = URL(string:callbackURL)
         //SPTAuth.defaultInstance().tokenSwapURL = URL(string:kTokenSwapURL)

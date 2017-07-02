@@ -24,8 +24,8 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
-        self.navigationItem.titleView = imageViewThing
+//        let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
+//        self.navigationItem.titleView = imageViewThing
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.sessionUpdatedNotification), name: NSNotification.Name(rawValue: "sessionUpdated"), object: nil)
         self.firstLoad = true
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
             self.showPlayer()
         }
         else {
-            print("*** Failed to log in")
+            //print("*** Failed to log in")
         }
     }
     
@@ -92,7 +92,7 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
         if segue.identifier == "loginToVibe" {
             let navVC = segue.destination as! UINavigationController
             let newView = navVC.topViewController as! VibeViewController
-            print(session)
+            //print(session)
             newView.handleNewSession(session)
         }
     }
@@ -117,7 +117,7 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, 
         SPTAuth.defaultInstance().renewSession(SPTAuth.defaultInstance().session) { error, session in
             SPTAuth.defaultInstance().session = session
             if error != nil {
-                print("*** Error renewing session: \(String(describing: error))")
+                //print("*** Error renewing session: \(String(describing: error))")
                 return
             }
             self.showPlayer()

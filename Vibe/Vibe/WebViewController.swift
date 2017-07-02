@@ -28,14 +28,16 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
-        self.navigationItem.titleView = imageViewThing
+//        let imageViewThing = UIImageView(image: #imageLiteral(resourceName: "vibetitle"))
+//        self.navigationItem.titleView = imageViewThing
         print(initialURL)
         let initialRequest = URLRequest(url: self.initialURL)
         self.webView = UIWebView(frame: self.view.bounds)
         self.webView.delegate = self
         self.webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(self.webView)
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 107, green: 105, blue: 206, alpha: 0.75)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 107, green: 105, blue: 206, alpha: 0.75)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
         self.webView.loadRequest(initialRequest)
     }
