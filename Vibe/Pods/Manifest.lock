@@ -1,0 +1,15 @@
+PODS:
+  - DZNEmptyDataSet (1.8.1)
+  - MGSwipeTableCell (1.5.6)
+
+DEPENDENCIES:
+  - DZNEmptyDataSet
+  - MGSwipeTableCell
+
+SPEC CHECKSUMS:
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
+
+PODFILE CHECKSUM: 1903e34803ff7d4ebca6fa4b0f46f1fbeac0fcbf
+
+COCOAPODS: 1.2.1
